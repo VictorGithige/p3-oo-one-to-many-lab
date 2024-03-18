@@ -16,31 +16,31 @@ def test_pet_init():
     pet = Pet("Clifford", "dog", owner)
     assert pet.owner == owner
 
-    Pet.all = []
+    Pet.all_pets = []
 
 def test_has_pet_types():
     """Test Pet class has variable PET_TYPES"""
     assert Pet.PET_TYPES == ['dog', 'cat', 'rodent', 'bird', 'reptile', 'exotic']
 
-    Pet.all = []
+    Pet.all_pets = []
 
 def test_checks_pet_type():
     """Test Pet class validates pet_type"""
     with pytest.raises(Exception):
         Pet("Jim Jr.", "panda")
 
-    Pet.all = []
+    Pet.all_pets = []
 
 def test_pet_has_all():
     """Test Pet class has variable all, storing all instances of Pet"""
     pet1 = Pet("Whiskers", "cat")
     pet2 = Pet("Jerry", "reptile")
 
-    assert pet1 in Pet.all
-    assert pet2 in Pet.all
-    assert len(Pet.all) == 2
+    assert pet1 in Pet.all_pets
+    assert pet2 in Pet.all_pets
+    assert len(Pet.all_pets) == 2
 
-    Pet.all = []
+    Pet.all_pets = []
 
 def test_owner_has_pets():
     """Test Owner class has method pets(), returning all related pets"""
@@ -50,7 +50,7 @@ def test_owner_has_pets():
 
     assert owner.pets() == [pet1, pet2]
 
-    Pet.all = []
+    Pet.all_pets = []
 
 def test_owner_adds_pets():
     """Test Owner class has method add_pet(), validating and adding a pet"""
@@ -61,7 +61,7 @@ def test_owner_adds_pets():
     assert pet.owner == owner
     assert owner.pets() == [pet]
 
-    Pet.all = []
+    Pet.all_pets = []
 
 def test_add_pet_checks_isinstance():
     """Test Owner class instance method add_pet() validates Pet type"""
@@ -69,7 +69,7 @@ def test_add_pet_checks_isinstance():
     with pytest.raises(Exception):
         owner.add_pet("Lucky")
 
-    Pet.all = []
+    Pet.all_pets = []
 
 def test_get_sorted_pets():
     """Test Owner class has method get_sorted_pets, sorting related pets by name"""
